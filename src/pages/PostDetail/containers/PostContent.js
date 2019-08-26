@@ -3,10 +3,9 @@ import { Container, Button } from 'reactstrap'
 import styled from 'styled-components'
 import PostList from '../../../containers/PostList'
 import {
-  Loading, Box, Text, Flex,
+  Loading, Box, Flex,
 } from '../../../components'
 import PostComments from '../../../containers/PostComments'
-import theme from '../../../constants/theme'
 
 const Icon = styled.img`
   height: 10px;

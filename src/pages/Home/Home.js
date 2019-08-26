@@ -10,10 +10,10 @@ class Home extends React.Component {
   }
 
   render() {
-    const { posts } = this.props
+    const { posts, users } = this.props
     return (
       <>
-        <NavigationBar />
+        <NavigationBar users={users} />
         <Posts posts={posts} />
       </>
     )
@@ -22,6 +22,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   posts: state.posts.list,
+  users: state.users.list,
 })
 
 export default connect(mapStateToProps, {

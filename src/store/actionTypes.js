@@ -5,3 +5,11 @@ export const GET_POSTS_ALL_R = 'GET_POSTS_ALL_R'
 export const GET_POSTS_DETAIL = 'GET_POSTS_DETAIL'
 export const GET_POSTS_DETAIL_F = 'GET_POSTS_DETAIL_F'
 export const GET_POSTS_DETAIL_R = 'GET_POSTS_DETAIL_R'
+
+export const GET_USERS_ALL = 'GET_USERS_ALL'
+export const GET_USERS_ALL_F = 'GET_USERS_ALL_F'
+export const GET_USERS_ALL_R = 'GET_USERS_ALL_R'
+
+export const GET_USER_DETAIL = 'GET_USER_DETAIL'
+export const GET_USER_DETAIL_F = 'GET_USER_DETAIL_F'
+export const GET_USER_DETAIL_R = 'GET_USER_DETAIL_R'

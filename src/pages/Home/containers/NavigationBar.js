@@ -9,33 +9,42 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Badge,
 } from 'reactstrap'
 import { Navigation } from '../../../components'
 
-const NavigationBar = () => {
+const NavigationBar = ({ users }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Navigation>
       <Link to="/" className="navbar-brand">
-          Social Media
+        Social Media
       </Link>
       <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <Link to="/followers/" className="nav-link">Followers</Link>
+            <Link to="/users" className="nav-link">
+              {
+                users !== null && (
+                  <Badge color="secondary">{users.length}</Badge>
+                )
+              }
+              &nbsp;
+              Users
+            </Link>
           </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
-                    FJ
+              FJ
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                      Profile
+                Profile
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                      Logout
+                Logout
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

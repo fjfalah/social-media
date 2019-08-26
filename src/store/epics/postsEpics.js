@@ -10,6 +10,7 @@ import {
 import { actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF } from '../actions/postsActions'
 import userServices from '../../services/userServices'
 import commentsServices from '../../services/commentsServices'
+import { actionGetUsersAllF } from '../actions/usersActions'
 
 const getPostsAllEpics = (action$) => {
   return action$.ofType(GET_POSTS_ALL).pipe(
@@ -28,8 +29,9 @@ const getPostsAllEpics = (action$) => {
 
           return { postsData, users }
         }),
-        switchMap(({ postsData }) => concat(
+        switchMap(({ postsData, users }) => concat(
           of(actionGetPostsAllF(postsData)),
+          of(actionGetUsersAllF(users))
         )),
         catchError((error) => of(actionGetPostsAllR(error)))
       )
