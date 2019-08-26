@@ -1,0 +1,7 @@
+export const GET_POSTS_ALL = 'GET_POSTS_ALL'
+export const GET_POSTS_ALL_F = 'GET_POSTS_ALL_F'
+export const GET_POSTS_ALL_R = 'GET_POSTS_ALL_R'
+
+export const GET_POSTS_DETAIL = 'GET_POSTS_DETAIL'
+export const GET_POSTS_DETAIL_F = 'GET_POSTS_DETAIL_F'
+export const GET_POSTS_DETAIL_R = 'GET_POSTS_DETAIL_R'

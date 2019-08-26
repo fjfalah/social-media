@@ -1,11 +1,14 @@
 import { createEpicMiddleware } from 'redux-observable'
 import { createStore, applyMiddleware, compose } from 'redux'
+import logger from 'redux-logger'
 import epics from './epics'
 import reducers from './reducers'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const epicMiddleware = createEpicMiddleware()
-const middlewares = []
+const middlewares = [
+  logger,
+]
 
 const enhancer = process.env.NODE_ENV === 'production'
   ? applyMiddleware(epicMiddleware)
