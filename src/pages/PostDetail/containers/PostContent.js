@@ -22,7 +22,7 @@ const PostContent = ({ post }) => {
   return (
     <Container>
       <Box h="66" />
-      <PostList post={post}>
+      <PostList post={post} isDetailPost>
         <Flex jc="flex-end">
           <Button size="sm" color="info">
             <Icon src={require('@/assets/icons/reply-white.svg')} alt="" />

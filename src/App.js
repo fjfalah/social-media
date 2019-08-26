@@ -5,6 +5,7 @@ import { Row, Col } from 'reactstrap'
 import { Home, PostDetail, Users } from './pages'
 import { GlobalStyles } from './components'
 import history from './routes/history'
+import UserDetail from './pages/UserDetail/UserDetail'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/posts/:postId" component={PostDetail} />
             <Route exact path="/users" component={Users} />
+            <Route exact path="/users/:userId" component={UserDetail} />
           </Switch>
         </Router>
         <GlobalStyles />

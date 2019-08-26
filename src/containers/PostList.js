@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ListGroupItem } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import theme from '../constants/theme'
 import { Flex, Text } from '../components'
@@ -19,25 +18,30 @@ const Username = styled(Text)`
   font-weight: 500;
 `
 
-const PostList = ({ post, rightContent, children }) => {
+const Root = ({ children, isDetailPost, id }) => {
+  return isDetailPost
+    ? <div to={`/posts/${id}`} className="list-group-item">{children}</div>
+    : <Link to={`/posts/${id}`} className="list-group-item list-group-item-action">{children}</Link>
+}
+
+const PostList = ({ post, isDetailPost, children }) => {
   const {
-    userId, userData, title, body,
+    id, userId, userData, title, body,
   } = post
   return (
-    <ListGroupItem>
+    <Root isDetailPost={isDetailPost} id={id}>
       <Flex jc="flex-start">
         <Avatar />
         <Flex fd="column">
-          <Link to={`/user/${userId}`}>
+          <Link to={`/users/${userId}`}>
             <Username variant="paragraph-bold" color={theme.color.oceanBlue}>{userData.name} <Text as="span" color={theme.color.grey}>@{userData.username}</Text></Username>
           </Link>
           <Text variant="paragraph-bold">{title}</Text>
           <Text variant="caption" dangerouslySetInnerHTML={{ __html: marked.parse(body) }} />
         </Flex>
-        {rightContent}
       </Flex>
       {children}
-    </ListGroupItem>
+    </Root>
   )
 }
 

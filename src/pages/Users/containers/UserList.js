@@ -37,7 +37,7 @@ const UserList = ({ users }) => {
                 <Flex jc="flex-start">
                   <Avatar />
                   <Flex ai="center">
-                    <Link to={`/user/${id}`}>
+                    <Link to={`/users/${id}`}>
                       <Username variant="paragraph-bold" color={theme.color.oceanBlue}>{name}</Username>
                       <Text color={theme.color.grey}>@{username}</Text>
                     </Link>

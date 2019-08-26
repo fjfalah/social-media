@@ -5,5 +5,6 @@ import usersEpics from '../epics/usersEpics'
 export default combineEpics(
   postsEpics.getPostsAllEpics,
   postsEpics.getPostDetailEpics,
-  usersEpics.getUsersAllEpics
+  usersEpics.getUsersAllEpics,
+  usersEpics.getUserDetailEpics
 )
