@@ -5,10 +5,11 @@ import { of, zip, concat } from 'rxjs'
 import postServices from '../../services/postServices'
 
 import {
-  GET_POSTS_ALL,
+  GET_POSTS_ALL, GET_POSTS_DETAIL,
 } from '../actionTypes'
-import { actionGetPostsAllF, actionGetPostsAllR } from '../actions/postsActions'
+import { actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF } from '../actions/postsActions'
 import userServices from '../../services/userServices'
+import commentsServices from '../../services/commentsServices'
 
 const getPostsAllEpics = (action$) => {
   return action$.ofType(GET_POSTS_ALL).pipe(
@@ -36,6 +37,36 @@ const getPostsAllEpics = (action$) => {
   )
 }
 
+const getPostDetailEpics = (action$) => {
+  return action$.ofType(GET_POSTS_DETAIL).pipe(
+    switchMap((action) => {
+      return zip(
+        postServices.getPostDetail(action.payload).pipe(pluck('data')),
+        commentsServices.getComments({ postId: action.payload }).pipe(pluck('data'))
+      ).pipe(
+        switchMap(([post, comments]) => {
+          return userServices.getUserDetail(post.userId).pipe(
+            pluck('data'),
+            map((userData) => {
+              return {
+                ...post,
+                comments,
+                userData,
+              }
+            }),
+          )
+        }),
+        switchMap((data) => of(actionGetPostsDetailF(data))),
+        catchError(([errorPost, errorComment]) => {
+          console.log(errorPost)
+          console.log(errorComment)
+        })
+      )
+    })
+  )
+}
+
 export default {
   getPostsAllEpics,
+  getPostDetailEpics,
 }

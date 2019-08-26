@@ -6,7 +6,7 @@ const setVariant = (props) => {
   case 'title-lg':
     return css`
           font-size: 28px;
-          font-weight: 700;
+          font-weight: 500;
           letter-spacing: 0.4px;
           line-height: 36px;
         `
@@ -49,13 +49,13 @@ const setVariant = (props) => {
   case 'caption-bold':
     return css`
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 500;
             line-height: 20px;
           `
   case 'overline':
     return css`
           font-size: 12px;
-          font-weight: 700;
+          font-weight: 500;
           line-height: 20px;
         `
   default:

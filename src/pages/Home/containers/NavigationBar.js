@@ -17,7 +17,7 @@ const NavigationBar = () => {
   return (
     <Navigation>
       <Link to="/" className="navbar-brand">
-            Social Media
+          Social Media
       </Link>
       <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
