@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import { connect } from 'react-redux'
 import NavigationBar from './containers/NavigationBar'
 import { actionGetPostsAll } from '../../store/actions/postsActions'
+import Posts from './containers/Posts'
 
 class Home extends React.Component {
   componentDidMount = () => {
@@ -10,15 +10,20 @@ class Home extends React.Component {
   }
 
   render() {
+    const { posts } = this.props
     return (
       <>
         <NavigationBar />
-        <Container />
+        <Posts posts={posts} />
       </>
     )
   }
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => ({
+  posts: state.posts.list,
+})
+
+export default connect(mapStateToProps, {
   actionGetPostsAll,
 })(Home)
