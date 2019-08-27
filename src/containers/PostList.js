@@ -43,7 +43,6 @@ const PostList = ({
           <UsernameWrapper isInUserProfile={isInUserProfile} userId={userId}>
             <Username variant="paragraph-bold" color={theme.color.oceanBlue}>{userData.name} <Text as="span" color={theme.color.grey}>@{userData.username}</Text></Username>
           </UsernameWrapper>
-          <Link to={`/users/${userId}`} />
           <Text variant="paragraph-bold">{title}</Text>
           <Text variant="caption" dangerouslySetInnerHTML={{ __html: marked.parse(body) }} />
         </Flex>

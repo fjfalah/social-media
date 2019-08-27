@@ -61,7 +61,7 @@
       "off"
     ],
     "no-unused-expressions": [
-      "error",
+      "off",
       {
         "allowTernary": true
       }
@@ -84,7 +84,8 @@
     "react/forbid-prop-types": "off",
     "react/no-array-index-key": "off",
     "react/prop-types": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "babel/no-unused-expressions": "error",
   },
   "settings": {
     "import/resolver": {

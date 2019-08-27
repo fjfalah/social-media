@@ -10,6 +10,7 @@ const PostComments = ({ comments }) => {
         comments.map((comment, index) => (
           <ListGroupItem key={index} className="justify-content-between">
             <Text variant="caption-bold">{comment.email}</Text>
+            <Text varian="caption">{comment.name}</Text>
             <Text varian="caption" dangerouslySetInnerHTML={{ __html: marked.parse(comment.body) }} />
           </ListGroupItem>
         ))
