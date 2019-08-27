@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { from, defer } from 'rxjs'
 import { API_BASE_URL } from '../constants/config'
+import myProfile from '../constants/myProfile'
 
 const apiReq = (args) => {
   return defer(() => {
@@ -14,7 +15,7 @@ const apiReq = (args) => {
     }
 
     if (args.body) {
-      config = { ...config, data: args.body }
+      config = { ...config, data: { ...args.body, userId: myProfile.id } }
     }
     if (args.params) {
       config = { ...config, params: args.params }

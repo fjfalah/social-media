@@ -5,6 +5,7 @@ const color = {
   grey10: '#eeeeee',
   grey: 'grey',
   oceanBlue: '#00a1b0',
+  red: '#dc3545',
 }
 
 const font = {

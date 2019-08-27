@@ -21,3 +21,7 @@ export const GET_USER_ALBUM_R = 'GET_USER_ALBUM_R'
 export const GET_USER_PHOTO = 'GET_USER_PHOTO'
 export const GET_USER_PHOTO_F = 'GET_USER_PHOTO_F'
 export const GET_USER_PHOTO_R = 'GET_USER_PHOTO_R'
+
+export const ADD_NEW_POST = 'ADD_NEW_POST'
+export const ADD_NEW_POST_F = 'ADD_NEW_POST_F'
+export const ADD_NEW_POST_R = 'ADD_NEW_POST_R'

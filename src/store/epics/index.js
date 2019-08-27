@@ -6,8 +6,9 @@ import albumsEpics from './albumsEpics'
 export default combineEpics(
   postsEpics.getPostsAllEpics,
   postsEpics.getPostDetailEpics,
+  postsEpics.addNewPostEpics,
   usersEpics.getUsersAllEpics,
   usersEpics.getUserDetailEpics,
   albumsEpics.getUserAlbumsEpics,
-  albumsEpics.getUserPhotosEpics
+  albumsEpics.getUserPhotosEpics,
 )

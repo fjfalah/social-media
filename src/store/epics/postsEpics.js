@@ -5,12 +5,15 @@ import { of, zip, concat } from 'rxjs'
 import postServices from '../../services/postServices'
 
 import {
-  GET_POSTS_ALL, GET_POSTS_DETAIL,
+  GET_POSTS_ALL, GET_POSTS_DETAIL, ADD_NEW_POST,
 } from '../actionTypes'
-import { actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF } from '../actions/postsActions'
+import {
+  actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF, actionAddNewPostF, actionAddNewPostR,
+} from '../actions/postsActions'
 import userServices from '../../services/userServices'
 import commentsServices from '../../services/commentsServices'
 import { actionGetUsersAllF } from '../actions/usersActions'
+import myProfile from '../../constants/myProfile'
 
 const getPostsAllEpics = (action$) => {
   return action$.ofType(GET_POSTS_ALL).pipe(
@@ -68,7 +71,26 @@ const getPostDetailEpics = (action$) => {
   )
 }
 
+const addNewPostEpics = (action$) => {
+  return action$.ofType(ADD_NEW_POST).pipe(
+    switchMap((action) => {
+      return postServices.addPost(action.payload).pipe(
+        pluck('data'),
+        switchMap((data) => {
+          const newPost = {
+            ...data,
+            userData: myProfile,
+          }
+          return of(actionAddNewPostF(newPost))
+        }),
+        catchError((error) => actionAddNewPostR(error))
+      )
+    })
+  )
+}
+
 export default {
   getPostsAllEpics,
   getPostDetailEpics,
+  addNewPostEpics,
 }

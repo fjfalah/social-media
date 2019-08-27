@@ -32,11 +32,11 @@ const UserInfo = ({ user }) => {
             label="Address"
             value={(
               <>
-                <Text as="h5">Street: {address.street}</Text>
-                <Text as="h5">Suite: {address.suite}</Text>
-                <Text as="h5">City: {address.city}</Text>
-                <Text as="h5">Zipcode: {address.zipcode}</Text>
-                <Text as="h5">Geo: lat:{address.geo.lat} lng:{address.geo.lng}</Text>
+                <Text as="label">Street: {address.street}</Text><br />
+                <Text as="label">Suite: {address.suite}</Text><br />
+                <Text as="label">City: {address.city}</Text><br />
+                <Text as="label">Zipcode: {address.zipcode}</Text><br />
+                <Text as="label">Geo: lat:{address.geo.lat} lng:{address.geo.lng}</Text><br />
               </>
             )}
           />
@@ -45,9 +45,9 @@ const UserInfo = ({ user }) => {
             label="Company"
             value={(
               <>
-                <Text as="h5">Name: {company.name}</Text>
-                <Text as="h5">Catch Phrase: {company.catchPhrase}</Text>
-                <Text as="h5">bs: {company.bs}</Text>
+                <Text as="label">Name: {company.name}</Text><br />
+                <Text as="label">Catch Phrase: {company.catchPhrase}</Text><br />
+                <Text as="label">bs: {company.bs}</Text><br />
               </>
             )}
           />
