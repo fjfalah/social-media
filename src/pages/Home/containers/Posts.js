@@ -5,18 +5,23 @@ import { Loading, Flex } from '../../../components'
 import PostList from '../../../containers/PostList'
 import history from '../../../routes/history'
 import ModalPostEdit from './ModalPostEdit'
+import ModalPostDelete from './ModalPostDelete'
 
-const Posts = ({ posts, account, lastEdited }) => {
+const Posts = ({
+  posts, account, lastEdited, lastDeletedId,
+}) => {
   const [selectedPost, setSelectedPost] = useState('')
-  const [isModalShow, setIsModalShow] = useState(false)
-
-  const handleSubmit = () => {
-
-  }
+  const [isModalEditShow, setIsModalEditShow] = useState(false)
+  const [isModalDeleteShow, setIsModalDeleteShow] = useState(false)
 
   const handleEditPost = (post) => {
     setSelectedPost(post)
-    setIsModalShow(!isModalShow)
+    setIsModalEditShow(!isModalEditShow)
+  }
+
+  const handleDeletePost = (post) => {
+    setSelectedPost(post)
+    setIsModalDeleteShow(!isModalDeleteShow)
   }
 
   if (posts === null || account === null) {
@@ -33,6 +38,9 @@ const Posts = ({ posts, account, lastEdited }) => {
             .sort((a, b) => b.id - a.id)
             .map((post) => {
               const isMyPost = post.userId === account.id
+
+              if (post.id === lastDeletedId) return null
+
               return (
                 <PostList
                   key={post.id}
@@ -43,7 +51,13 @@ const Posts = ({ posts, account, lastEdited }) => {
                     {
                       isMyPost && (
                         <>
-                          <Button size="sm" color="danger" outline>Delete</Button>
+                          <Button
+                            size="sm"
+                            color="danger"
+                            outline
+                            onClick={() => handleDeletePost(post)}
+                          >Delete
+                          </Button>
                           &nbsp;
                           <Button
                             size="sm"
@@ -63,7 +77,8 @@ const Posts = ({ posts, account, lastEdited }) => {
             })
         }
       </ListGroup>
-      <ModalPostEdit data={selectedPost} isModalShow={isModalShow} handleModalToggle={setIsModalShow} handleSubmit={handleSubmit} />
+      <ModalPostEdit data={selectedPost} isModalShow={isModalEditShow} handleModalToggle={setIsModalEditShow} />
+      <ModalPostDelete data={selectedPost} isModalShow={isModalDeleteShow} handleModalToggle={setIsModalDeleteShow} />
     </>
   )
 }
@@ -71,6 +86,7 @@ const Posts = ({ posts, account, lastEdited }) => {
 const mapStateToProps = (state) => ({
   account: state.account.data,
   lastEdited: state.posts.lastEdited,
+  lastDeletedId: state.posts.lastDeletedId,
 })
 
 export default connect(mapStateToProps)(Posts)

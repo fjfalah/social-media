@@ -11,6 +11,9 @@ import {
   EDIT_POST,
   EDIT_POST_F,
   EDIT_POST_R,
+  DELETE_POST,
+  DELETE_POST_F,
+  DELETE_POST_R,
 } from '../actionTypes'
 
 export const actionGetPostsAll = () => ({
@@ -69,5 +72,20 @@ export const actionEditPostF = (data) => ({
 
 export const actionEditPostR = (error) => ({
   type: EDIT_POST_R,
+  payload: error,
+})
+
+export const actionDeletePost = (postId) => ({
+  type: DELETE_POST,
+  payload: postId,
+})
+
+export const actionDeletePostF = (data) => ({
+  type: DELETE_POST_F,
+  payload: data,
+})
+
+export const actionDeletePostR = (error) => ({
+  type: DELETE_POST_R,
   payload: error,
 })

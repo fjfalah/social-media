@@ -11,6 +11,9 @@ import {
   EDIT_POST,
   EDIT_POST_F,
   EDIT_POST_R,
+  DELETE_POST,
+  DELETE_POST_F,
+  DELETE_POST_R,
 } from '../actionTypes'
 
 const initialState = {
@@ -20,6 +23,7 @@ const initialState = {
   errorMessage: null,
   selectedPost: null,
   lastEdited: null,
+  lastDeletedId: null,
 }
 
 export default (state = initialState, action) => {
@@ -69,6 +73,18 @@ export default (state = initialState, action) => {
       isLoadingEvent: false,
       lastEdited: action.payload,
     }
+
+  case DELETE_POST:
+    return {
+      ...state,
+      isLoadingEvent: true,
+    }
+  case DELETE_POST_F:
+    return {
+      ...state,
+      isLoadingEvent: false,
+      lastDeletedId: action.payload,
+    }
   case GET_POSTS_ALL_R:
   case GET_POSTS_DETAIL_R:
     return {
@@ -78,6 +94,7 @@ export default (state = initialState, action) => {
     }
   case ADD_NEW_POST_R:
   case EDIT_POST_R:
+  case DELETE_POST_R:
     return {
       ...state,
       isLoadingEvent: false,

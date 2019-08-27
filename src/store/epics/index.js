@@ -10,6 +10,7 @@ export default combineEpics(
   postsEpics.getPostDetailEpics,
   postsEpics.addNewPostEpics,
   postsEpics.editPostEpics,
+  postsEpics.deletePostEpics,
   usersEpics.getUsersAllEpics,
   usersEpics.getUserDetailEpics,
   albumsEpics.getUserAlbumsEpics,

@@ -33,3 +33,7 @@ export const ADD_NEW_POST_R = 'ADD_NEW_POST_R'
 export const EDIT_POST = 'EDIT_POST'
 export const EDIT_POST_F = 'EDIT_POST_F'
 export const EDIT_POST_R = 'EDIT_POST_R'
+
+export const DELETE_POST = 'DELETE_POST'
+export const DELETE_POST_F = 'DELETE_POST_F'
+export const DELETE_POST_R = 'DELETE_POST_R'
