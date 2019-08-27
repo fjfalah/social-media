@@ -17,10 +17,10 @@ const InfoList = ({ label, value }) => {
   )
 }
 
-const UserInfo = ({ user }) => {
+const ProfileInfo = ({ account }) => {
   const {
     address, company, email, phone, website,
-  } = user
+  } = account
 
   return (
     <Root>
@@ -57,4 +57,4 @@ const UserInfo = ({ user }) => {
   )
 }
 
-export default UserInfo
+export default ProfileInfo

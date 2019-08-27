@@ -12,6 +12,7 @@ import {
   Badge,
 } from 'reactstrap'
 import { Navigation } from '../../../components'
+import history from '../../../routes/history'
 
 const NavigationBar = ({ users }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,7 +40,7 @@ const NavigationBar = ({ users }) => {
               FJ
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>
+              <DropdownItem onClick={() => history.push('/profile')}>
                 Profile
               </DropdownItem>
               <DropdownItem divider />

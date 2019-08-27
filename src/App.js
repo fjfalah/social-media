@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
 import {
-  Home, PostDetail, Users, UserPhoto,
+  Home, PostDetail, Users, UserPhoto, MyProfile,
 } from './pages'
 import { GlobalStyles } from './components'
 import history from './routes/history'
@@ -23,6 +23,7 @@ const App = () => {
               <Route exact path="/users" component={Users} />
               <Route path="/users/:userId" component={UserDetail} />
               <Route exact path="/album/:albumId/user/:userId" component={UserPhoto} />
+              <Route exact path="/profile" component={MyProfile} />
             </Switch>
           </Router>
         </BrowserRouter>

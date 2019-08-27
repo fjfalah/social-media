@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable'
-import postsEpics from '../epics/postsEpics'
-import usersEpics from '../epics/usersEpics'
-import albumsEpics from '../epics/albumsEpics'
+import postsEpics from './postsEpics'
+import usersEpics from './usersEpics'
+import albumsEpics from './albumsEpics'
 
 export default combineEpics(
   postsEpics.getPostsAllEpics,
