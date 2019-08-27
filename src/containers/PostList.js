@@ -24,7 +24,14 @@ const Root = ({ children, isDetailPost, id }) => {
     : <Link to={`/posts/${id}`} className="list-group-item list-group-item-action">{children}</Link>
 }
 
-const PostList = ({ post, isDetailPost, children }) => {
+const UsernameWrapper = ({ userId, isInUserProfile, children }) => {
+  return isInUserProfile
+    ? children
+    : <Link to={`/users/${userId}`}>{children}</Link>
+}
+const PostList = ({
+  post, isDetailPost, children, isInUserProfile,
+}) => {
   const {
     id, userId, userData, title, body,
   } = post
@@ -33,9 +40,10 @@ const PostList = ({ post, isDetailPost, children }) => {
       <Flex jc="flex-start">
         <Avatar />
         <Flex fd="column">
-          <Link to={`/users/${userId}`}>
+          <UsernameWrapper isInUserProfile={isInUserProfile} userId={userId}>
             <Username variant="paragraph-bold" color={theme.color.oceanBlue}>{userData.name} <Text as="span" color={theme.color.grey}>@{userData.username}</Text></Username>
-          </Link>
+          </UsernameWrapper>
+          <Link to={`/users/${userId}`} />
           <Text variant="paragraph-bold">{title}</Text>
           <Text variant="caption" dangerouslySetInnerHTML={{ __html: marked.parse(body) }} />
         </Flex>

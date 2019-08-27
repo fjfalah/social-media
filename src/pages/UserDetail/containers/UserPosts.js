@@ -11,6 +11,7 @@ const UserPosts = ({ user }) => {
             <PostList
               key={post.id}
               post={post}
+              isInUserProfile
             />
           )
         })

@@ -1,7 +1,7 @@
 import { apiReq } from '../libraries'
 
 const getAlbums = (params) => {
-  apiReq({
+  return apiReq({
     uri: '/albums',
     method: 'get',
     params,
@@ -9,7 +9,7 @@ const getAlbums = (params) => {
 }
 
 const getPhotos = (params) => {
-  apiReq({
+  return apiReq({
     uri: '/photos',
     method: 'get',
     params,

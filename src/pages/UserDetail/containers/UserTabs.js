@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Card } from 'reactstrap'
 import { Flex } from '../../../components'
 import theme from '../../../constants/theme'
@@ -15,13 +16,19 @@ const Button = styled.div`
   font-weight: ${(props) => (props.isActive ? '500' : '400')};
 `
 
-const UserTabs = ({ activeTab, handleActiveTab }) => {
+const UserTabs = ({ path, activeTab, handleActiveTab }) => {
   return (
     <Card>
-      <Flex>
-        <Button isActive={activeTab === 'post'} onClick={() => handleActiveTab('post')}>Post</Button>
-        <Button isActive={activeTab === 'info'} onClick={() => handleActiveTab('info')}>Info</Button>
-        <Button isActive={activeTab === 'album'} onClick={() => handleActiveTab('album')}>Album</Button>
+      <Flex jc="space-around">
+        <Link to={`${path}`}>
+          <Button isActive={activeTab === ''} onClick={() => handleActiveTab('')}>Post</Button>
+        </Link>
+        <Link to={`${path}/info`}>
+          <Button isActive={activeTab === 'info'} onClick={() => handleActiveTab('info')}>Info</Button>
+        </Link>
+        <Link to={`${path}/album`}>
+          <Button isActive={activeTab === 'album'} onClick={() => handleActiveTab('album')}>Album</Button>
+        </Link>
       </Flex>
     </Card>
   )

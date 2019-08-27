@@ -19,7 +19,7 @@ const InfoList = ({ label, value }) => {
 
 const UserInfo = ({ user }) => {
   const {
-    address, company, email, id, name, phone, posts, username, website,
+    address, company, email, phone, website,
   } = user
 
   return (
@@ -32,11 +32,11 @@ const UserInfo = ({ user }) => {
             label="Address"
             value={(
               <>
-                <Text>City: {address.city}</Text>
-                <Text>Street: {address.street}</Text>
-                <Text>Suite: {address.suite}</Text>
-                <Text>Zipcode: {address.zipcode}</Text>
-                <Text>Geo: lat:{address.geo.lat} lang:{address.geo.lang}</Text>
+                <Text as="label">City: {address.city}</Text>
+                <Text as="label">Street: {address.street}</Text>
+                <Text as="label">Suite: {address.suite}</Text>
+                <Text as="label">Zipcode: {address.zipcode}</Text>
+                <Text as="label">Geo: lat:{address.geo.lat} lang:{address.geo.lang}</Text>
               </>
             )}
           />
@@ -45,9 +45,9 @@ const UserInfo = ({ user }) => {
             label="Company"
             value={(
               <>
-                <Text>Name: {company.name}</Text>
-                <Text>Catch Phrase: {company.catchPhrasa}</Text>
-                <Text>bs: {company.bs}</Text>
+                <Text as="label">Name: {company.name}</Text>
+                <Text as="label">Catch Phrase: {company.catchPhrasa}</Text>
+                <Text as="label">bs: {company.bs}</Text>
               </>
             )}
           />

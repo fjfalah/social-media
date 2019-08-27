@@ -43,6 +43,7 @@ export default (state = initialState, action) => {
   case GET_POSTS_DETAIL_R:
     return {
       ...state,
+      isLoading: false,
       errorMessage: action.payload,
     }
   default:

@@ -13,3 +13,7 @@ export const GET_USERS_ALL_R = 'GET_USERS_ALL_R'
 export const GET_USER_DETAIL = 'GET_USER_DETAIL'
 export const GET_USER_DETAIL_F = 'GET_USER_DETAIL_F'
 export const GET_USER_DETAIL_R = 'GET_USER_DETAIL_R'
+
+export const GET_USER_ALBUM = 'GET_USER_ALBUM'
+export const GET_USER_ALBUM_F = 'GET_USER_ALBUM_F'
+export const GET_USER_ALBUM_R = 'GET_USER_ALBUM_R'
