@@ -4,18 +4,17 @@ import styled from 'styled-components'
 import {
   Card, Form, FormGroup, Input, Button, Spinner,
 } from 'reactstrap'
-import { Box, Flex, Text } from '../components'
-import { actionAddNewPost } from '../store/actions/postsActions'
-import theme from '../constants/theme'
+import { Box, Flex, Text } from '../../../components'
+import { actionAddNewPost } from '../../../store/actions/postsActions'
+import theme from '../../../constants/theme'
 
 const Root = styled(Card)`
   padding: 10px;
 `
 
 const PostForm = (props) => {
-  const { isLoadingEvent, isEditForm, account } = props
+  const { isLoadingEvent, account } = props
   const [isErrorForm, setIsErrorForm] = useState(false)
-  const [isEdit, setIsEdit] = useState(isEditForm)
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
@@ -31,17 +30,10 @@ const PostForm = (props) => {
         body,
         userId: account.id,
       }
-      if (!isEdit) {
-        props.actionAddNewPost(bodyReq)
-      }
-      handleCancel()
+      props.actionAddNewPost(bodyReq)
+      setTitle('')
+      setBody('')
     }
-  }
-
-  const handleCancel = () => {
-    setIsEdit(false)
-    setTitle('')
-    setBody('')
   }
 
   return (
@@ -74,34 +66,13 @@ const PostForm = (props) => {
             )
           }
           <Flex jc="flex-end">
-            {
-              !isEdit && (
-                <Button disabled={isLoadingEvent} color="info">
-                  {
-                    isLoadingEvent
-                      ? <Spinner color="light" />
-                      : 'Post'
-                  }
-                </Button>
-              )
-            }
-            {
-              isEdit && (
-                <>
-                  <Button outline color="secondary" onClick={() => handleCancel()}>
-                    Cancel
-                  </Button>
-                  &nbsp;
-                  <Button disabled={isLoadingEvent} color="info">
-                    {
-                      isLoadingEvent
-                        ? <Spinner color="light" />
-                        : 'Save Edit'
-                    }
-                  </Button>
-                </>
-              )
-            }
+            <Button disabled={isLoadingEvent} color="info">
+              {
+                isLoadingEvent
+                  ? <Spinner color="light" />
+                  : 'Post'
+              }
+            </Button>
           </Flex>
         </Form>
       </Root>

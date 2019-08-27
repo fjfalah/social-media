@@ -5,10 +5,10 @@ import {
 import { of, zip, concat } from 'rxjs'
 import postServices from '../../services/postServices'
 import {
-  GET_POSTS_ALL, GET_POSTS_DETAIL, ADD_NEW_POST,
+  GET_POSTS_ALL, GET_POSTS_DETAIL, ADD_NEW_POST, EDIT_POST,
 } from '../actionTypes'
 import {
-  actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF, actionAddNewPostF, actionAddNewPostR,
+  actionGetPostsAllF, actionGetPostsAllR, actionGetPostsDetailF, actionAddNewPostF, actionAddNewPostR, actionEditPostF, actionEditPostR,
 } from '../actions/postsActions'
 import userServices from '../../services/userServices'
 import commentsServices from '../../services/commentsServices'
@@ -90,8 +90,27 @@ const addNewPostEpics = (action$) => {
   )
 }
 
+const editPostEpics = (action$) => {
+  return action$.ofType(EDIT_POST).pipe(
+    switchMap(({ payload }) => {
+      return postServices.editPost(payload.bodyReq, payload.postId).pipe(
+        pluck('data'),
+        switchMap((data) => {
+          const newPost = {
+            ...data,
+            userData: store.getState().account.data,
+          }
+          return of(actionEditPostF(newPost))
+        }),
+        catchError((error) => actionEditPostR(error))
+      )
+    })
+  )
+}
+
 export default {
   getPostsAllEpics,
   getPostDetailEpics,
   addNewPostEpics,
+  editPostEpics,
 }

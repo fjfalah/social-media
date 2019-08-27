@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { combineEpics } from 'redux-observable'
 import postsEpics from './postsEpics'
 import usersEpics from './usersEpics'
@@ -8,6 +9,7 @@ export default combineEpics(
   postsEpics.getPostsAllEpics,
   postsEpics.getPostDetailEpics,
   postsEpics.addNewPostEpics,
+  postsEpics.editPostEpics,
   usersEpics.getUsersAllEpics,
   usersEpics.getUserDetailEpics,
   albumsEpics.getUserAlbumsEpics,

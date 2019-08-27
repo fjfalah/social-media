@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import theme from '../constants/theme'
 import { Flex, Text } from '../components'
 import { marked } from '../libraries'
+import history from '../routes/history'
+
+const Root = styled.div``
 
 const Avatar = styled.div`
   width: 50px;
@@ -18,12 +21,6 @@ const Username = styled(Text)`
   font-weight: 500;
 `
 
-const Root = ({ children, isDetailPost, id }) => {
-  return isDetailPost
-    ? <div to={`/posts/${id}`} className="list-group-item">{children}</div>
-    : <Link to={`/posts/${id}`} className="list-group-item list-group-item-action">{children}</Link>
-}
-
 const UsernameWrapper = ({ userId, isInUserProfile, children }) => {
   return isInUserProfile
     ? children
@@ -36,7 +33,7 @@ const PostList = ({
     id, userId, userData, title, body,
   } = post
   return (
-    <Root isDetailPost={isDetailPost} id={id}>
+    <Root className="list-group-item" onClick={() => isDetailPost && history.push(`/posts/${id}`)}>
       <Flex jc="flex-start">
         <Avatar />
         <Flex fd="column">

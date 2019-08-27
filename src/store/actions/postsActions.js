@@ -8,6 +8,9 @@ import {
   ADD_NEW_POST,
   ADD_NEW_POST_F,
   ADD_NEW_POST_R,
+  EDIT_POST,
+  EDIT_POST_F,
+  EDIT_POST_R,
 } from '../actionTypes'
 
 export const actionGetPostsAll = () => ({
@@ -51,5 +54,20 @@ export const actionAddNewPostF = (data) => ({
 
 export const actionAddNewPostR = (error) => ({
   type: ADD_NEW_POST_R,
+  payload: error,
+})
+
+export const actionEditPost = (bodyReq, postId) => ({
+  type: EDIT_POST,
+  payload: { bodyReq, postId },
+})
+
+export const actionEditPostF = (data) => ({
+  type: EDIT_POST_F,
+  payload: data,
+})
+
+export const actionEditPostR = (error) => ({
+  type: EDIT_POST_R,
   payload: error,
 })

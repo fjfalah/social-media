@@ -8,6 +8,9 @@ import {
   ADD_NEW_POST,
   ADD_NEW_POST_F,
   ADD_NEW_POST_R,
+  EDIT_POST,
+  EDIT_POST_F,
+  EDIT_POST_R,
 } from '../actionTypes'
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   list: null,
   errorMessage: null,
   selectedPost: null,
+  lastEdited: null,
 }
 
 export default (state = initialState, action) => {
@@ -54,6 +58,17 @@ export default (state = initialState, action) => {
       isLoadingEvent: false,
       list: [...state.list, action.payload],
     }
+  case EDIT_POST:
+    return {
+      ...state,
+      isLoadingEvent: true,
+    }
+  case EDIT_POST_F:
+    return {
+      ...state,
+      isLoadingEvent: false,
+      lastEdited: action.payload,
+    }
   case GET_POSTS_ALL_R:
   case GET_POSTS_DETAIL_R:
     return {
@@ -62,9 +77,11 @@ export default (state = initialState, action) => {
       errorMessage: action.payload,
     }
   case ADD_NEW_POST_R:
+  case EDIT_POST_R:
     return {
       ...state,
       isLoadingEvent: false,
+      errorMessage: action.payload,
     }
   default:
     return state

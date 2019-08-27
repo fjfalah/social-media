@@ -5,7 +5,7 @@ import NavigationBar from './containers/NavigationBar'
 import { actionGetPostsAll } from '../../store/actions/postsActions'
 import { actionGetAccountData } from '../../store/actions/accountActions'
 import Posts from './containers/Posts'
-import PostForm from '../../containers/PostForm'
+import PostForm from './containers/PostForm'
 import { Box } from '../../components'
 import { ACCOUNT_ID } from '../../constants/common'
 
@@ -23,7 +23,7 @@ class Home extends React.Component {
         <Container>
           <Box h="66" />
           <PostForm />
-          <Posts posts={posts} />
+          <Posts posts={posts} handleEditPost />
         </Container>
       </>
     )

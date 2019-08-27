@@ -23,10 +23,11 @@ const addPost = (body) => {
   })
 }
 
-const editPost = (postId) => {
+const editPost = (body, postId) => {
   return apiReq({
     uri: `/posts/${postId}`,
     method: 'put',
+    body,
   })
 }
 

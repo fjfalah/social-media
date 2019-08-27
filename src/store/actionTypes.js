@@ -29,3 +29,7 @@ export const GET_USER_PHOTO_R = 'GET_USER_PHOTO_R'
 export const ADD_NEW_POST = 'ADD_NEW_POST'
 export const ADD_NEW_POST_F = 'ADD_NEW_POST_F'
 export const ADD_NEW_POST_R = 'ADD_NEW_POST_R'
+
+export const EDIT_POST = 'EDIT_POST'
+export const EDIT_POST_F = 'EDIT_POST_F'
+export const EDIT_POST_R = 'EDIT_POST_R'
