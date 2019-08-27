@@ -12,7 +12,7 @@ const BackIcon = styled.img`
 const NavigationBar = () => {
   return (
     <Navigation>
-      <NavbarBrand href="#" className="mr-auto" onClick={() => history.goBack()}>
+      <NavbarBrand href="#" className="mr-auto" onClick={() => history.push('/')}>
         <BackIcon src={require('@/assets/icons/left-arrow-white.svg')} alt="" />
         Post
       </NavbarBrand>

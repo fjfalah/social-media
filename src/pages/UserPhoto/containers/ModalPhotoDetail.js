@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-  Modal, ModalBody, ModalHeader, ModalFooter, Button,
+  Modal, ModalBody, ModalHeader,
 } from 'reactstrap'
 
 const Img = styled.img`
