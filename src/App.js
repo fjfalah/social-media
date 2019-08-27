@@ -4,7 +4,9 @@ import {
   Router, Switch, Route, BrowserRouter,
 } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
-import { Home, PostDetail, Users } from './pages'
+import {
+  Home, PostDetail, Users, UserPhoto,
+} from './pages'
 import { GlobalStyles } from './components'
 import history from './routes/history'
 import UserDetail from './pages/UserDetail/UserDetail'
@@ -20,6 +22,7 @@ const App = () => {
               <Route exact path="/posts/:postId" component={PostDetail} />
               <Route exact path="/users" component={Users} />
               <Route path="/users/:userId" component={UserDetail} />
+              <Route exact path="/album/:albumId/user/:userId" component={UserPhoto} />
             </Switch>
           </Router>
         </BrowserRouter>

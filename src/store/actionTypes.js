@@ -17,3 +17,7 @@ export const GET_USER_DETAIL_R = 'GET_USER_DETAIL_R'
 export const GET_USER_ALBUM = 'GET_USER_ALBUM'
 export const GET_USER_ALBUM_F = 'GET_USER_ALBUM_F'
 export const GET_USER_ALBUM_R = 'GET_USER_ALBUM_R'
+
+export const GET_USER_PHOTO = 'GET_USER_PHOTO'
+export const GET_USER_PHOTO_F = 'GET_USER_PHOTO_F'
+export const GET_USER_PHOTO_R = 'GET_USER_PHOTO_R'

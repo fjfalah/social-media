@@ -2,6 +2,9 @@ import {
   GET_USER_ALBUM,
   GET_USER_ALBUM_F,
   GET_USER_ALBUM_R,
+  GET_USER_PHOTO,
+  GET_USER_PHOTO_F,
+  GET_USER_PHOTO_R,
 } from '../actionTypes'
 
 const initialState = {
@@ -24,8 +27,20 @@ export default (state = initialState, action) => {
       isLoading: false,
       list: action.payload,
     }
-
+  case GET_USER_PHOTO:
+    return {
+      ...state,
+      isLoading: true,
+      selectedAlbum: null,
+    }
+  case GET_USER_PHOTO_F:
+    return {
+      ...state,
+      isLoading: false,
+      selectedAlbum: action.payload,
+    }
   case GET_USER_ALBUM_R:
+  case GET_USER_PHOTO_R:
     return {
       ...state,
       isLoading: false,

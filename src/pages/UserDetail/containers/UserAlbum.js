@@ -1,26 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { ListGroup } from 'reactstrap'
 import { actionGetUserAlbum } from '../../../store/actions/albumsActions'
 import { Loading } from '../../../components'
 
 class UserAlbum extends React.Component {
-  state = {
-    selectedAlbumId: null,
-  }
-
   componentDidMount = () => {
     const { user } = this.props
     this.props.actionGetUserAlbum({ userId: user.id })
   }
 
-  handleSelectAlbum = (selectedAlbumId) => {
-    this.setState({ selectedAlbumId })
-  }
-
   render() {
-    const { albums } = this.props
-    const { selectedAlbumId } = this.state
+    const { albums, user } = this.props
 
     if (albums === null) {
       return <Loading />
@@ -31,12 +23,13 @@ class UserAlbum extends React.Component {
         {
           albums.map((album, index) => {
             return (
-              <ListGroupItem
+              <Link
                 key={index}
-                className="list-group-item-action"
-                onClick={() => this.handleSelectAlbum(album.id)}
-              >{album.title}
-              </ListGroupItem>
+                to={`/album/${album.id}/user/${user.id}`}
+                className="list-group-item list-group-item-action"
+              >
+                {album.title}
+              </Link>
             )
           })
         }

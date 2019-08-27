@@ -8,5 +8,6 @@ export default combineEpics(
   postsEpics.getPostDetailEpics,
   usersEpics.getUsersAllEpics,
   usersEpics.getUserDetailEpics,
-  albumsEpics.getUserAlbumsEpics
+  albumsEpics.getUserAlbumsEpics,
+  albumsEpics.getUserPhotosEpics
 )
