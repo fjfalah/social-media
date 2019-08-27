@@ -1,9 +1,9 @@
+/* eslint-disable import/no-cycle */
 import {
   switchMap, catchError, pluck, map,
 } from 'rxjs/operators'
 import { of, zip, concat } from 'rxjs'
 import postServices from '../../services/postServices'
-
 import {
   GET_POSTS_ALL, GET_POSTS_DETAIL, ADD_NEW_POST,
 } from '../actionTypes'
@@ -13,7 +13,7 @@ import {
 import userServices from '../../services/userServices'
 import commentsServices from '../../services/commentsServices'
 import { actionGetUsersAllF } from '../actions/usersActions'
-import myProfile from '../../constants/myProfile'
+import store from '..'
 
 const getPostsAllEpics = (action$) => {
   return action$.ofType(GET_POSTS_ALL).pipe(
@@ -79,8 +79,9 @@ const addNewPostEpics = (action$) => {
         switchMap((data) => {
           const newPost = {
             ...data,
-            userData: myProfile,
+            userData: store.getState().account.data,
           }
+
           return of(actionAddNewPostF(newPost))
         }),
         catchError((error) => actionAddNewPostR(error))

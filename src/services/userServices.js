@@ -1,9 +1,10 @@
 import { apiReq } from '../libraries'
 
-const getUsers = () => {
+const getUsers = (params) => {
   return apiReq({
     uri: '/users',
     method: 'get',
+    params,
   })
 }
 

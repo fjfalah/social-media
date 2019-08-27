@@ -13,7 +13,7 @@ const Root = styled(Card)`
 `
 
 const PostForm = (props) => {
-  const { isLoadingEvent, isEditForm } = props
+  const { isLoadingEvent, isEditForm, account } = props
   const [isErrorForm, setIsErrorForm] = useState(false)
   const [isEdit, setIsEdit] = useState(isEditForm)
   const [title, setTitle] = useState('')
@@ -29,6 +29,7 @@ const PostForm = (props) => {
       const bodyReq = {
         title,
         body,
+        userId: account.id,
       }
       if (!isEdit) {
         props.actionAddNewPost(bodyReq)
@@ -111,6 +112,7 @@ const PostForm = (props) => {
 
 const mapStateToProps = (state) => ({
   isLoadingEvent: state.posts.isLoadingEvent,
+  account: state.account.data,
 })
 
 export default connect(mapStateToProps, {

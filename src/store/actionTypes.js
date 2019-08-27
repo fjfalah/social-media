@@ -1,3 +1,7 @@
+export const GET_ACCOUNT_DATA = 'GET_ACCOUNT_DATA'
+export const GET_ACCOUNT_DATA_F = 'GET_ACCOUNT_DATA_F'
+export const GET_ACCOUNT_DATA_R = 'GET_ACCOUNT_DATA_R'
+
 export const GET_POSTS_ALL = 'GET_POSTS_ALL'
 export const GET_POSTS_ALL_F = 'GET_POSTS_ALL_F'
 export const GET_POSTS_ALL_R = 'GET_POSTS_ALL_R'
