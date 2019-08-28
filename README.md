@@ -45,3 +45,8 @@ npm run dev
 npm install
 npm start
 ```
+
+```bash
+# Testing
+npm run test
+```
