@@ -8,13 +8,14 @@ import {
 } from '../../../components'
 import CommentItem from '../../../containers/CommentItem'
 import ModalCommentEdit from './ModalCommentEdit'
+import ModalCommentDelete from './ModalCommentDelete'
 
 const Icon = styled.img`
   height: 10px;
   margin-right: 5px;
 `
 
-const PostContent = ({ post, lastEdited }) => {
+const PostContent = ({ post, lastEdited, lastDeletedId }) => {
   const [selectedComment, setSelectedComment] = useState('')
   const [isModalEditShow, setIsModalEditShow] = useState(false)
   const [isModalDeleteShow, setIsModalDeleteShow] = useState(false)
@@ -51,45 +52,51 @@ const PostContent = ({ post, lastEdited }) => {
         post.comments && (
           <ListGroup>
             {
-              post.comments.map((comment, index) => (
-                <CommentItem
-                  key={index}
-                  comment={comment.id === lastEdited?.id ? lastEdited : comment}
-                >
-                  {
-                    index === 0 && (
-                      <Flex jc="flex-end">
-                        <Button
-                          outline
-                          size="sm"
-                          color="danger"
-                          onClick={() => handleDeleteComment(comment)}
-                        >Delete
-                        </Button>
-                        &nbsp;
-                        <Button
-                          outline
-                          size="sm"
-                          color="success"
-                          onClick={() => handleEditComment(comment)}
-                        >Edit
-                        </Button>
-                      </Flex>
-                    )
-                  }
-                </CommentItem>
-              ))
+              post.comments.map((comment, index) => {
+                if (comment.id === lastDeletedId) return null
+
+                return (
+                  <CommentItem
+                    key={index}
+                    comment={comment.id === lastEdited?.id ? lastEdited : comment}
+                  >
+                    {
+                      index === 0 && (
+                        <Flex jc="flex-end">
+                          <Button
+                            outline
+                            size="sm"
+                            color="danger"
+                            onClick={() => handleDeleteComment(comment)}
+                          >Delete
+                          </Button>
+                          &nbsp;
+                          <Button
+                            outline
+                            size="sm"
+                            color="success"
+                            onClick={() => handleEditComment(comment)}
+                          >Edit
+                          </Button>
+                        </Flex>
+                      )
+                    }
+                  </CommentItem>
+                )
+              })
             }
           </ListGroup>
         )
       }
       <ModalCommentEdit data={selectedComment} isModalShow={isModalEditShow} handleModalToggle={setIsModalEditShow} />
+      <ModalCommentDelete data={selectedComment} isModalShow={isModalDeleteShow} handleModalToggle={setIsModalDeleteShow} />
     </Container>
   )
 }
 
 const mapStateToProps = (state) => ({
   lastEdited: state.comments.lastEdited,
+  lastDeletedId: state.comments.lastDeletedId,
 })
 
 export default connect(mapStateToProps)(PostContent)
