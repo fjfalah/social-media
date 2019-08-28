@@ -1,8 +1,46 @@
-# React + Webpack Boilerplate
+# social-media
 
-## Motivation
-There are many ways to build React App. One of them is `create-react-app`. It's very popular since FB announce that, and you just run few command and TADA! Your React App is running without you need to config what's happening behind. How about your port, environment, modify or adding some config? How about production environment? What is differences with development environment? It's possible on `create-react-app` if you do `yarn eject` or `npm run eject`. But so much code that you have to read. Whereas you need it fast to start coding for development and production React App.
+Simple Social Media. UI & UX inspired by Twitter.
 
-Here, I try to create minimal boilerplate React App with webpack. Let's check this code out!
+### Feature
+- User can view profile
+- User can view user's profile
+- User can view list of users
+- User can view list of posts of each user
+- User can view list of albums of each user
+- User can view the detail of each post and its comment
+- User can view list of photos from an album
+- User can view the detail of photo
+- User can add, edit and delete post
+- User can add, edit and delete comment
 
-Happy React!
+### Asumption
+- User is already login with `userId = 10`
+- Because the API rule is fire and forget event (once event)
+  1. User Event's Effect (Create, Edit, Delete) is reset if refresh browser
+  2. User just can create once post / comment, refresh to create again
+  3. User can't edit / remove New Post / Comment
+
+### Main Dependencies
+- React Js (View)
+- Rx Js (Middleware)
+- Styled Components (CSS)
+- Reactstrap (CSS Framework)
+- Axios (Fetch)
+- Webpack (Bundler)
+- Jest (Unit Test)
+- API URL ([here](https://jsonplaceholder.typicode.com/))
+
+### How to Run
+
+```bash
+# development mode
+npm install
+npm run dev
+```
+
+```bash
+# production mode
+npm install
+npm start
+```
