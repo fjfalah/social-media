@@ -1,11 +1,11 @@
 import React from 'react'
-import { Container, Button } from 'reactstrap'
+import { Container, Button, ListGroup } from 'reactstrap'
 import styled from 'styled-components'
-import PostList from '../../../containers/PostList'
+import PostItem from '../../../containers/PostItem'
 import {
   Loading, Box, Flex,
 } from '../../../components'
-import PostComments from '../../../containers/PostComments'
+import CommentItem from '../../../containers/CommentItem'
 
 const Icon = styled.img`
   height: 10px;
@@ -22,16 +22,32 @@ const PostContent = ({ post }) => {
   return (
     <Container>
       <Box h="66" />
-      <PostList post={post} isDetailPost>
+      <PostItem post={post} isDetailPost>
         <Flex jc="flex-end">
           <Button size="sm" color="info">
             <Icon src={require('@/assets/icons/reply-white.svg')} alt="" />
             Reply
           </Button>
         </Flex>
-      </PostList>
+      </PostItem>
       <Box h="10" />
-      <PostComments comments={post.comments} />
+      {
+        post.comments && (
+          <ListGroup>
+            {
+              post.comments.map((comment, index) => (
+                <CommentItem
+                  key={index}
+                  email={comment.email}
+                  name={comment.name}
+                  body={comment.body}
+                />
+              ))
+            }
+          </ListGroup>
+        )
+      }
+
     </Container>
   )
 }

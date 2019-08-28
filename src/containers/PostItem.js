@@ -26,7 +26,7 @@ const UsernameWrapper = ({ userId, isInUserProfile, children }) => {
     ? children
     : <Link to={`/users/${userId}`}>{children}</Link>
 }
-const PostList = ({
+const PostItem = ({
   post, isDetailPost, children, isInUserProfile,
 }) => {
   const {
@@ -49,4 +49,4 @@ const PostList = ({
   )
 }
 
-export default PostList
+export default PostItem

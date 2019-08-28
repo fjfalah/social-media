@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListGroup } from 'reactstrap'
-import PostList from '../../../containers/PostList'
+import PostItem from '../../../containers/PostItem'
 
 const UserPosts = ({ user }) => {
   return (
@@ -8,7 +8,7 @@ const UserPosts = ({ user }) => {
       {
         user.posts.map((post) => {
           return (
-            <PostList
+            <PostItem
               key={post.id}
               post={post}
               isInUserProfile

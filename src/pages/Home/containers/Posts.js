@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ListGroup, Button } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Loading, Flex } from '../../../components'
-import PostList from '../../../containers/PostList'
+import PostItem from '../../../containers/PostItem'
 import history from '../../../routes/history'
 import ModalPostEdit from './ModalPostEdit'
 import ModalPostDelete from './ModalPostDelete'
@@ -42,7 +42,7 @@ const Posts = ({
               if (post.id === lastDeletedId) return null
 
               return (
-                <PostList
+                <PostItem
                   key={post.id}
                   post={post.id === lastEdited?.id ? lastEdited : post}
                   isMyPost={isMyPost}
@@ -72,7 +72,7 @@ const Posts = ({
                     }
                     <Button size="sm" color="secondary" outline onClick={() => history.push(`/posts/${post.id}`)}>Detail</Button>
                   </Flex>
-                </PostList>
+                </PostItem>
               )
             })
         }
