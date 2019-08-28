@@ -4,7 +4,8 @@
     "mocha": true,
     "browser": true,
     "node": true,
-    "amd": true
+    "amd": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
