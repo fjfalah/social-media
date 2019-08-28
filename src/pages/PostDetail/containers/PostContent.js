@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import { Container, Button, ListGroup } from 'reactstrap'
 import styled from 'styled-components'
 import PostItem from '../../../containers/PostItem'
@@ -13,7 +14,7 @@ const Icon = styled.img`
   margin-right: 5px;
 `
 
-const PostContent = ({ post }) => {
+const PostContent = ({ post, lastEdited }) => {
   const [selectedComment, setSelectedComment] = useState('')
   const [isModalEditShow, setIsModalEditShow] = useState(false)
   const [isModalDeleteShow, setIsModalDeleteShow] = useState(false)
@@ -53,9 +54,7 @@ const PostContent = ({ post }) => {
               post.comments.map((comment, index) => (
                 <CommentItem
                   key={index}
-                  email={comment.email}
-                  name={comment.name}
-                  body={comment.body}
+                  comment={comment.id === lastEdited?.id ? lastEdited : comment}
                 >
                   {
                     index === 0 && (
@@ -89,4 +88,8 @@ const PostContent = ({ post }) => {
   )
 }
 
-export default PostContent
+const mapStateToProps = (state) => ({
+  lastEdited: state.comments.lastEdited,
+})
+
+export default connect(mapStateToProps)(PostContent)

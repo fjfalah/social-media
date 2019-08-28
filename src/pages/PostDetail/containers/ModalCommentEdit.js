@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux'
 import { Text, Flex } from '../../../components'
 import theme from '../../../constants/theme'
+import { actionEditComment } from '../../../store/actions/commentsActions'
 
 const ModalCommentEdit = (props) => {
   const {
@@ -28,9 +29,9 @@ const ModalCommentEdit = (props) => {
         postId: data.postId,
         email: data.email,
       }
-      console.log(bodyReq)
-      // props.actionEditPost(bodyReq, data.id)
-      // handleModalToggle(!isModalShow)
+
+      props.actionEditComment(bodyReq, data.id)
+      handleModalToggle(!isModalShow)
     }
   }
 
@@ -80,9 +81,9 @@ const ModalCommentEdit = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  // isLoadingEvent: state.comments.isLoadingEvent,
+  isLoadingEvent: state.comments.isLoadingEvent,
 })
 
 export default connect(mapStateToProps, {
-
+  actionEditComment,
 })(ModalCommentEdit)

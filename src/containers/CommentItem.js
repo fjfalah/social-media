@@ -4,13 +4,14 @@ import { Text } from '../components'
 import { marked } from '../libraries'
 
 const CommentItem = ({
-  email, name, body, children,
+  comment, children,
 }) => {
+  const { email, name, body } = comment
   return (
     <ListGroupItem className="justify-content-between">
-      <Text variant="caption-bold">{email}</Text>
-      <Text varian="caption">{name}</Text>
-      <Text varian="caption" dangerouslySetInnerHTML={{ __html: marked.parse(body) }} />
+      <Text variant="paragraph-bold">{email}</Text>
+      <Text variant="caption-bold">{name}</Text>
+      <Text variant="caption" dangerouslySetInnerHTML={{ __html: marked.parse(body) }} />
       {children}
     </ListGroupItem>
   )
