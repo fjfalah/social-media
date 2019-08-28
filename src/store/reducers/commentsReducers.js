@@ -16,6 +16,7 @@ const initialState = {
   selectedComment: null,
   lastEdited: null,
   lastDeletedId: null,
+  newComment: null,
 }
 
 export default (state = initialState, action) => {
@@ -29,7 +30,7 @@ export default (state = initialState, action) => {
     return {
       ...state,
       isLoadingEvent: false,
-      list: [...state.list, action.payload],
+      newComment: action.payload,
     }
   case EDIT_COMMENT:
     return {
