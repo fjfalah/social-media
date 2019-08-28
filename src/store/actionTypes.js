@@ -37,3 +37,15 @@ export const EDIT_POST_R = 'EDIT_POST_R'
 export const DELETE_POST = 'DELETE_POST'
 export const DELETE_POST_F = 'DELETE_POST_F'
 export const DELETE_POST_R = 'DELETE_POST_R'
+
+export const ADD_NEW_COMMENT = 'ADD_NEW_COMMENT'
+export const ADD_NEW_COMMENT_F = 'ADD_NEW_COMMENT_F'
+export const ADD_NEW_COMMENT_R = 'ADD_NEW_COMMENT_R'
+
+export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const EDIT_COMMENT_F = 'EDIT_COMMENT_F'
+export const EDIT_COMMENT_R = 'EDIT_COMMENT_R'
+
+export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const DELETE_COMMENT_F = 'DELETE_COMMENT_F'
+export const DELETE_COMMENT_R = 'DELETE_COMMENT_R'

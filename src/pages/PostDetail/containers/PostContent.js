@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Button, ListGroup } from 'reactstrap'
 import styled from 'styled-components'
 import PostItem from '../../../containers/PostItem'
@@ -6,6 +6,7 @@ import {
   Loading, Box, Flex,
 } from '../../../components'
 import CommentItem from '../../../containers/CommentItem'
+import ModalCommentEdit from './ModalCommentEdit'
 
 const Icon = styled.img`
   height: 10px;
@@ -13,6 +14,20 @@ const Icon = styled.img`
 `
 
 const PostContent = ({ post }) => {
+  const [selectedComment, setSelectedComment] = useState('')
+  const [isModalEditShow, setIsModalEditShow] = useState(false)
+  const [isModalDeleteShow, setIsModalDeleteShow] = useState(false)
+
+  const handleEditComment = (comment) => {
+    setSelectedComment(comment)
+    setIsModalEditShow(!isModalEditShow)
+  }
+
+  const handleDeleteComment = (comment) => {
+    setSelectedComment(comment)
+    setIsModalDeleteShow(!isModalDeleteShow)
+  }
+
   if (post === null) {
     return (
       <Loading marginTop="66" />
@@ -41,13 +56,35 @@ const PostContent = ({ post }) => {
                   email={comment.email}
                   name={comment.name}
                   body={comment.body}
-                />
+                >
+                  {
+                    index === 0 && (
+                      <Flex jc="flex-end">
+                        <Button
+                          outline
+                          size="sm"
+                          color="danger"
+                          onClick={() => handleDeleteComment(comment)}
+                        >Delete
+                        </Button>
+                        &nbsp;
+                        <Button
+                          outline
+                          size="sm"
+                          color="success"
+                          onClick={() => handleEditComment(comment)}
+                        >Edit
+                        </Button>
+                      </Flex>
+                    )
+                  }
+                </CommentItem>
               ))
             }
           </ListGroup>
         )
       }
-
+      <ModalCommentEdit data={selectedComment} isModalShow={isModalEditShow} handleModalToggle={setIsModalEditShow} />
     </Container>
   )
 }

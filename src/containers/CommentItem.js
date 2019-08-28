@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListGroupItem } from 'reactstrap'
-import { Text, Box } from '../components'
+import { Text } from '../components'
 import { marked } from '../libraries'
 
 const CommentItem = ({

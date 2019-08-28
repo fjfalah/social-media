@@ -4,6 +4,7 @@ import postsEpics from './postsEpics'
 import usersEpics from './usersEpics'
 import albumsEpics from './albumsEpics'
 import accountEpics from './accountEpics'
+import commentsEpics from './commentsEpics'
 
 export default combineEpics(
   postsEpics.getPostsAllEpics,
@@ -16,4 +17,7 @@ export default combineEpics(
   albumsEpics.getUserAlbumsEpics,
   albumsEpics.getUserPhotosEpics,
   accountEpics.getAccountDataEpics,
+  commentsEpics.addNewPostEpics,
+  commentsEpics.editPostEpics,
+  commentsEpics.deletePostEpics,
 )

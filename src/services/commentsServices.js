@@ -16,10 +16,11 @@ const addComment = (body) => {
   })
 }
 
-const editComment = (commentId) => {
+const editComment = (body, commentId) => {
   return apiReq({
     uri: `/comments/${commentId}`,
     method: 'put',
+    body,
   })
 }
 
