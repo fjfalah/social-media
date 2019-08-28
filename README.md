@@ -16,6 +16,7 @@ Simple Social Media. UI & UX inspired by Twitter.
 
 ### Asumption
 - User is already login with `userId = 10`
+- User can Edit / Delete Post with `userId = 10`
 - Because the API rule is fire and forget event (once event)
   1. User Event's Effect (Create, Edit, Delete) is reset if refresh browser
   2. User just can create once post / comment, refresh to create again
